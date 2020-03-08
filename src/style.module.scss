@@ -153,6 +153,7 @@ button:focus{
 /*---FAVBOX STARTS----------------------------------------------------------------------------*/
 
 .favBox{
+    min-width:70%;
     max-width:90%;
     min-height:300px;
     border:1px red solid;
@@ -165,6 +166,11 @@ button:focus{
     flex-wrap:wrap;
 }
 
+.favBox_hidden{
+    visibility:hidden;
+}
+
+
 .favImage{
     width:100px;
     height:100px;
@@ -176,3 +182,11 @@ button:focus{
 
 
 /*---FAVBOX END----------------------------------------------------------------------------*/
+
+box-icon{
+    width:40px;
+    height:40px;
+    position:absolute;
+    right:0;
+    margin:5px;
+}

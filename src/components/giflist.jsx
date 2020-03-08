@@ -9,7 +9,8 @@ class GifList extends React.Component {
     constructor(){
         super();
         this.state = {
-            favouriteList:[]
+            favouriteList:[],
+            favBoxVisibility: true
         }
         this.updateFavList = this.updateFavList.bind(this)
     }
@@ -46,10 +47,13 @@ class GifList extends React.Component {
             )
         })
 
+        const favBoxVisibility = this.state.favBoxVisibility ? style.favBox : style.favBox_hidden
+
         return (
             <div className={style.gifList_wrapper}>
                 {gifItems}
-                <div className={style.favBox}>
+                <div className={favBoxVisibility}>
+                    <box-icon name='x-circle' onClick={e => this.setState({favBoxVisibility: false})}/>
                     {favBox}
                 </div>
             </div>

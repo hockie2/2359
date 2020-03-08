@@ -25,20 +25,34 @@ class App extends React.Component {
         console.log('LOADED')
     }
 
+    componenetDidUpdate(){
+        console.log('UPDATED')
+    }
 
-    handleTermChange(term2) {
-        let term = term2;
-        let gifsNum = this.state.gifsNum;
-        let url = `http://api.giphy.com/v1/gifs/search?q=${term}&api_key=dc6zaTOxFJmzC&limit=${gifsNum}`;
 
-        this.setState({term: term})
+    handleTermChange(word) {
+        let term = word;
+        const url = `http://api.giphy.com/v1/gifs/search?q=${term}&api_key=dc6zaTOxFJmzC&limit= 8`;
 
-        let promise = fetch(url)
-        promise.then(res => res.json())
+        fetch(url)
+        .then(res => res.json())
         .then(gifs => {
-            this.setState({gifs: gifs.data})
+            this.setState({gifs: gifs.data, term})
         })
     };
+
+    fetchMore(){
+        console.log('FETCH')
+        let { term, gifsNum } = this.state
+        gifsNum+= 8;
+        const url = `http://api.giphy.com/v1/gifs/search?q=${term}&api_key=dc6zaTOxFJmzC&limit=${gifsNum}`;
+
+        fetch(url)
+        .then(res => res.json())
+        .then(gifs => {
+            this.setState({gifs: gifs.data, gifsNum})
+        })
+    }
 
     addCount(){
         let favCount = this.state.favCount
@@ -50,26 +64,6 @@ class App extends React.Component {
         let favCount = this.state.favCount
         favCount--
         this.setState({favCount})
-    }
-
-    fetchMore(){
-        console.log('FETCH')
-        let gifsNum = this.state.gifsNum
-        let term = this.state.term
-        let url = `http://api.giphy.com/v1/gifs/search?q=${term}&api_key=dc6zaTOxFJmzC&limit=${gifsNum}`;
-
-        gifsNum = gifsNum + 8;
-
-        let promise = fetch(url)
-        promise.then(res => res.json())
-        .then(gifs => {
-            this.setState({gifs: gifs.data, gifsNum: gifsNum}, () => console.log(this.state.gifs))
-        })
-    }
-
-    showFavourite(){
-
-
     }
 
   render() {

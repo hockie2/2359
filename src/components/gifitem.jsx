@@ -47,7 +47,7 @@ class GifItem extends React.Component {
 
   render() {
 
-    const favourited = this.state.favourited? style.gifItem_wrapper_favourited : style.gifItem_wrapper_unfavourited;
+    const favourited = this.state.favourited ? style.gifItem_wrapper_favourited : style.gifItem_wrapper_unfavourited;
 
     return (
             <div className={favourited}>

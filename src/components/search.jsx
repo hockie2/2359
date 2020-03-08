@@ -10,16 +10,10 @@ class Search extends React.Component {
         }
     }
 
-    // onInputChange(term) {
-    //     this.setState({term});
-    //     this.props.onTermChange(term);
-    // }
-
-
   render() {
 
     return (
-            <input type="search" className={style.search} onChange={event => this.props.onTermChange(event.target.value)} />
+            <input type="search" className={style.search} onChange={e => this.props.onTermChange(e.target.value)} />
     );
   }
 }
